@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Subha!</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        body {
+            margin: 0;
+            background: linear-gradient(135deg, #1e1b4b, #311042);
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+        }
+        .slide {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+            transform: scale(0.95);
+        }
+        .slide.active {
+            display: flex;
+            opacity: 1;
+            transform: scale(1);
+        }
+        /* Cake & Candle Styles */
+        .cake {
+            position: relative;
+            width: 180px;
+            height: 120px;
+            background: #f472b6;
+            border-radius: 20px 20px 10px 10px;
+            box-shadow: 0 10px 0 #db2777;
+        }
+        .candle {
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 16px;
+            height: 40px;
+            background: linear-gradient(to right, #6ee7b7, #3b82f6);
+            border-radius: 4px;
+        }
+        .flame {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 16px;
+            height: 25px;
+            background: #f59e0b;
+            border-radius: 50% 50% 20% 20%;
+            box-shadow: 0 0 15px #ef4444;
+            animation: flicker 0.1s ease-in-out infinite alternate;
+            transition: opacity 0.4s ease;
+        }
+        @keyframes flicker {
+            0% { transform: translateX(-50%) scale(1); }
+            100% { transform: translateX(-50%) scale(1.1) skewX(2deg); }
+        }
+        /* Floating elements background animation */
+        .bg-element {
+            position: absolute;
+            pointer-events: none;
+            animation: floatUp 6s linear infinite;
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body class="relative min-h-screen flex items-center justify-center text-center px-4">
+
+    <audio id="bgMusic" loop src="https://assets.mixkit.co/music/preview/mixkit-happy-birthday-instrumental-version-145.mp3"></audio>
+
+    <div id="animationContainer" class="absolute inset-0 overflow-hidden pointer-events-none z-0"></div>
+
+    <div id="slide1" class="slide active flex-col items-center justify-center z-10 w-full max-w-lg cursor-pointer" onclick="nextSlide(1)">
+        <div class="p-8 bg-black/40 backdrop-blur-md rounded-3xl border border-pink-500/30 shadow-2xl animate-bounce">
+            <h1 class="text-4xl md:text-5xl font-extrabold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-400">
+                You Have an Invitation 💌
+            </h1>
+            <p class="mt-6 text-lg text-pink-200">Tap anywhere to enter Subha's special day...</p>
+        </div>
+    </div>
+
+    <div id="slide2" class="slide flex-col items-center justify-center z-10 w-full max-w-xl">
+        <div class="p-6 bg-black/50 backdrop-blur-md rounded-3xl border border-purple-500/30 shadow-2xl w-full">
+            <h2 class="text-3xl font-bold text-purple-300 mb-4">Save The Date! 📅</h2>
+            
+            <div class="bg-gray-900/90 rounded-2xl p-4 shadow-inner border border-gray-800">
+                <div class="text-xl font-bold text-center text-pink-400 border-b border-gray-700 pb-2 mb-2">JUNE 2026</div>
+                <div class="grid grid-cols-7 gap-1 text-xs text-gray-400 font-semibold mb-2">
+                    <div>M</div><div>T</div><div>W</div><div>T</div><div>F</div><div>S</div><div>S</div>
+                </div>
+                <div class="grid grid-cols-7 gap-1 text-sm font-medium">
+                    <div class="p-2">1</div><div class="p-2">2</div><div class="p-2">3</div><div class="p-2">4</div><div class="p-2">5</div>
+                    <div class="p-2 bg-gradient-to-br from-pink-500 to-purple-600 rounded-full text-white font-black scale-110 shadow-lg animate-pulse relative group">
+                        6
+                        <span class="absolute -top-6 left-1/2 -translate-x-1/2 text-[10px] bg-black text-pink-300 px-1 rounded border border-pink-400">Subha!</span>
+                    </div>
+                    <div class="p-2">7</div><div class="p-2">8</div><div class="p-2">9</div><div class="p-2">10</div>
+                    <div class="p-2">11</div><div class="p-2">12</div><div class="p-2">13</div><div class="p-2">14</div><div class="p-2">15</div>
+                    <div class="p-2">16</div><div class="p-2">17</div><div class="p-2">18</div><div class="p-2">19</div><div class="p-2">20</div>
+                    <div class="p-2">21</div><div class="p-2">22</div><div class="p-2">23</div><div class="p-2">24</div><div class="p-2">25</div>
+                    <div class="p-2">26</div><div class="p-2">27</div><div class="p-2">28</div><div class="p-2">29</div><div class="p-2">30</div>
+                </div>
+            </div>
+
+            <p class="mt-4 text-sm text-gray-300 italic">"The universe aligned beautifully on this exact day ✨"</p>
+            <button onclick="nextSlide(2)" class="mt-6 px-6 py-2.5 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full font-bold shadow-lg shadow-pink-500/20 hover:scale-105 transition-transform">
+                Continue Next 👉
+            </button>
+        </div>
+    </div>
+
+    <div id="slide3" class="slide flex-col items-center justify-center z-10 w-full max-w-md">
+        <div class="p-6 bg-black/50 backdrop-blur-md rounded-3xl border border-emerald-500/30 shadow-2xl w-full flex flex-col items-center">
+            <h2 class="text-2xl md:text-3xl font-bold text-emerald-300 mb-2">Make a Wish! 🕯️</h2>
+            <p id="micStatus" class="text-xs text-emerald-200/70 mb-8 bg-emerald-950/50 border border-emerald-500/20 px-3 py-1 rounded-full">
+                Waiting for Mic Access... Blow into mic to put out the flame!
+            </p>
+
+            <div class="my-12 flex justify-center items-end h-40">
+                <div class="cake flex justify-center">
+                    <div class="candle">
+                        <div id="candleFlame" class="flame"></div>
+                    </div>
+                </div>
+            </div>
+
+            <button onclick="nextSlide(3)" id="cakeNextBtn" class="hidden px-6 py-2.5 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-full font-bold shadow-lg hover:scale-105 transition-transform animate-bounce">
+                Yay! Proceed 🎉
+            </button>
+        </div>
+    </div>
+
+    <div id="slide4" class="slide flex-col items-center justify-center z-10 w-full max-w-lg">
+        <div class="p-8 bg-black/60 backdrop-blur-lg rounded-3xl border-2 border-pink-400 shadow-2xl relative">
+            <h1 class="text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-pink-400 to-purple-400 tracking-wide animate-pulse">
+                HAPPY BIRTHDAY <br>SUBHA! 👑
+            </h1>
+            
+            <div class="mt-6 text-base md:text-lg text-pink-100 leading-relaxed min-h-[80px] bg-white/5 p-4 rounded-xl border border-white/10">
+                <p id="typedMessage"></p>
+            </div>
+
+            <button onclick="nextSlide(4)" class="mt-8 px-8 py-3 bg-gradient-to-r from-yellow-400 to-pink-500 text-black font-extrabold rounded-full shadow-lg hover:scale-105 transition-transform">
+                See Our Memories 📸
+            </button>
+        </div>
+    </div>
+
+    <div id="slide5" class="slide flex-col items-center justify-center z-10 w-full max-w-xl">
+        <div class="p-6 bg-black/60 backdrop-blur-md rounded-3xl border border-sky-500/30 shadow-2xl w-full">
+            <h2 class="text-2xl font-bold text-sky-300 mb-4">Some Unforgettable Moments 🥰</h2>
+            
+            <div class="relative bg-gray-900 rounded-2xl overflow-hidden shadow-inner border border-white/10 aspect-video flex items-center justify-center">
+                <div id="memoryTrack" class="w-full h-full flex items-center justify-center p-2">
+                    <div class="text-center p-8 text-gray-400">Loading Memories Container...</div>
+                </div>
+            </div>
+
+            <div class="flex justify-between items-center mt-4 px-2">
+                <button onclick="prevMemory()" class="px-4 py-1.5 bg-gray-800 rounded-lg text-sm hover:bg-gray-700">◀ Prev</button>
+                <span id="memoryCounter" class="text-xs text-gray-400 font-mono">1 / 1</span>
+                <button onclick="nextMemory()" class="px-4 py-1.5 bg-gray-800 rounded-lg text-sm hover:bg-gray-700">Next ▶</button>
+            </div>
+
+            <button onclick="nextSlide(5)" class="mt-8 px-6 py-2.5 bg-gradient-to-r from-sky-500 to-indigo-600 rounded-full font-bold shadow-lg hover:scale-105 transition-transform">
+                Watch Something Sweet 🍿
+            </button>
+        </div>
+    </div>
+
+    <div id="slide6" class="slide flex-col items-center justify-center z-10 w-full max-w-2xl">
+        <div class="p-6 bg-black/60 backdrop-blur-md rounded-3xl border border-amber-500/30 shadow-2xl w-full">
+            <h2 class="text-2xl font-bold text-amber-300 mb-4">A Special Video Clip For You 🎬</h2>
+            
+            <div class="relative w-full aspect-video rounded-xl overflow-hidden shadow-lg border border-white/10 bg-black">
+                <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/Z8N6gNnS3Y4" title="Birthday Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+
+            <button onclick="nextSlide(6)" class="mt-6 px-6 py-2.5 bg-gradient-to-r from-amber-500 to-orange-600 rounded-full font-bold shadow-lg hover:scale-105 transition-transform">
+                Final Surprise ✨
+            </button>
+        </div>
+    </div>
+
+    <div id="slide7" class="slide flex-col items-center justify-center z-10 w-full max-w-md">
+        <div class="p-8 bg-black/50 backdrop-blur-md rounded-3xl border border-rose-500/30 shadow-2xl">
+            <h1 class="text-4xl font-extrabold text-rose-400 animate-pulse">Thank You! ❤️</h1>
+            <p class="mt-4 text-gray-200 text-base leading-relaxed">
+                Thank you for filling our world with so much warmth, laughter, and incredible memories. May this brand new chapter bring you endless success and endless smiles!
+            </p>
+            <div class="mt-6 text-2xl">✨ 🎂 🎈 🥂 ✨</div>
+        </div>
+    </div>
+
+    <script>
+        const paragraphText = "Happy Birthday Subha! Wishing you a spectacular year filled with magic, structural code alignment, countless moments of deep laughter, and beautiful surprises. Keep shining exactly as bright as you do!";
+
+        const memories = [
+            { img: "1000052056.jpg", text: "Starting off strong with a big thumbs up! 👍✨" },
+            { img: "1000058393.jpg", text: "A peaceful moment of grace and blessings. 🙏💫" },
+            { img: "1000049963.jpg", text: "Squad goals! True happiness is being surrounded by your favorites. 💖" },
+            { img: "1000049909.jpg", text: "The perfect study lounge setup or room chill vibes! 🛌😂" },
+            { img: "1000049892.jpg", text: "Late night snack attacks with the best crew. 🍿🎉" },
+            { img: "1000050123.jpg", text: "Blanket fortress mode activated! Warmth & absolute silliness. 🧣" },
+            { img: "1000055666.jpg", text: "Dressed up beautifully and killing it gracefully! 🌟👗" },
+            { img: "1000052068.jpg", text: "The standard classic sleepy-but-happy wink shot. 😉✨" },
+            { img: "1000050295.jpg", text: "Just relaxing and creating memories that will last a lifetime. 🌸" },
+            { img: "1000050293.jpg", text: "The ultimate frame full of smiles and shared joy! 🥳❤️" }
+        ];
+
+        let currentMemoryIdx = 0;
+
+        function nextSlide(currentIdx) {
+            const currentSlide = document.getElementById(`slide${currentIdx}`);
+            const nextSlide = document.getElementById(`slide${currentIdx + 1}`);
+            
+            if (currentSlide && nextSlide) {
+                if(currentIdx === 1) {
+                    const audio = document.getElementById('bgMusic');
+                    audio.play().catch(e => console.log("Audio waiting for touch."));
+                }
+
+                currentSlide.classList.remove('active');
+                setTimeout(() => {
+                    nextSlide.classList.add('active');
+                    if (currentIdx + 1 === 3) initMicrophoneBlow();
+                    if (currentIdx + 1 === 4) runTypewriter();
+                    if (currentIdx + 1 === 5) renderMemory();
+                }, 400); 
+            }
+        }
+
+        function spawnAmbiance() {
+            const container = document.getElementById('animationContainer');
+            const icons = ['🎈', '✨', '🎉', '🍿', '🧁', '🌸', '💥'];
+            setInterval(() => {
+                const el = document.createElement('div');
+                el.className = 'bg-element text-2xl';
+                el.innerText = icons[Math.floor(Math.random() * icons.length)];
+                el.style.left = Math.random() * 100 + 'vw';
+                el.style.animationDuration = (Math.random() * 4 + 4) + 's';
+                el.style.fontSize = (Math.random() * 20 + 16) + 'px';
+                container.appendChild(el);
+                setTimeout(() => el.remove(), 7000);
+            }, 400);
+        }
+        spawnAmbiance();
+
+        function initMicrophoneBlow() {
+            const statusText = document.getElementById('micStatus');
+            const flame = document.getElementById('candleFlame');
+            const nextBtn = document.getElementById('cakeNextBtn');
+
+            if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+                statusText.innerText = "Mic not supported. Click flame directly to extinguish!";
+                flame.style.cursor = 'pointer';
+                flame.onclick = () => blowOutFlame(flame, nextBtn, statusText);
+                return;
+            }
+
+            navigator.mediaDevices.getUserMedia({ audio: true })
+            .then(stream => {
+                statusText.innerText = "🎙️ Microphone hooked up. Blow loudly onto the phone/mic!";
+                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                const source = audioCtx.createMediaStreamSource(stream);
+                const analyzer = audioCtx.createAnalyser();
+                analyzer.fftSize = 256;
+                source.connect(analyzer);
+
+                const dataArray = new Uint8Array(analyzer.frequencyBinCount);
+                let checkBlow = setInterval(() => {
+                    analyzer.getByteFrequencyData(dataArray);
+                    let sum = 0;
+                    for(let i=0; i<dataArray.length; i++) sum += dataArray[i];
+                    let average = sum / dataArray.length;
+
+                    if (average > 55) { 
+                        blowOutFlame(flame, nextBtn, statusText);
+                        clearInterval(checkBlow);
+                        stream.getTracks().forEach(track => track.stop());
+                    }
+                }, 100);
+            })
+            .catch(err => {
+                statusText.innerText = "Mic access blocked. Tap the flame directly to blow it out!";
+                flame.style.cursor = 'pointer';
+                flame.onclick = () => blowOutFlame(flame, nextBtn, statusText);
+            });
+        }
+
+        function blowOutFlame(flame, nextBtn, statusText) {
+            flame.style.opacity = '0';
+            statusText.innerText = "🕯️ The wish has been cast successfully!";
+            statusText.className = "text-xs text-yellow-300 font-bold mb-8 bg-yellow-950/60 border border-yellow-500/40 px-3 py-1 rounded-full";
+            nextBtn.classList.remove('hidden');
+        }
+
+        function runTypewriter() {
+            const textContainer = document.getElementById('typedMessage');
+            textContainer.innerHTML = "";
+            let i = 0;
+            function type() {
+                if (i < paragraphText.length) {
+                    textContainer.innerHTML += paragraphText.charAt(i);
+                    i++;
+                    setTimeout(type, 35);
+                }
+            }
+            type();
+        }
+
+        function renderMemory() {
+            const track = document.getElementById('memoryTrack');
+            const counter = document.getElementById('memoryCounter');
+            const data = memories[currentMemoryIdx];
+
+            track.innerHTML = `
+                <div class="flex flex-col items-center justify-center text-center w-full h-full p-2">
+                    <img src="${data.img}" class="max-h-[220px] md:max-h-[280px] object-contain rounded-xl shadow-md border-2 border-white/20 mb-3" alt="Memory Missing: Upload ${data.img} to GitHub">
+                    <p class="text-sm md:text-base font-medium text-sky-100 italic bg-black/40 px-4 py-1.5 rounded-xl border border-white/5 max-w-[90%]">${data.text}</p>
+                </div>
+            `;
+            counter.innerText = `${currentMemoryIdx + 1} / ${memories.length}`;
+        }
+
+        function nextMemory() {
+            currentMemoryIdx = (currentMemoryIdx + 1) % memories.length;
+            renderMemory();
+        }
+
+        function prevMemory() {
+            currentMemoryIdx = (currentMemoryIdx - 1 + memories.length) % memories.length;
+            renderMemory();
+        }
+    </script>
+</body>
+</html>
